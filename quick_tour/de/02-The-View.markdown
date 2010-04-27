@@ -159,25 +159,28 @@ nächsten Abschnitt mehr erfahren werden.
 Template-Helper
 ---------------
 
-The Symfony templating system can be easily extended via helpers. Helpers are
-PHP objects that provide features useful in a template context. `actions` and
-`slots` are just two of the built-in Symfony helpers.
+Das Symfony-Templating-System kann einfach durch Helper erweitert werden.
+Helper sind PHP-Objekte, die nützliche Features im Template-Kontext
+bereitstellen. `actions` und `slots` sind nichts anderes als zwei solcher
+eingebauten Symfony-Helper.
 
-### Links between Pages
+### Links zwischen Seiten
 
-Speaking of web applications, creating links between different pages is a
-must. Instead of hardcoding URLs in templates, the `router` helper knows how
-to generate URLs based on the routing configuration. That way, all your URLs
-can be easily updated by changing the configuration.
+Wann immer es um Webapplikationen geht, ist das Erzeugen von Links eine
+Basisfunktionalität. Anstatt URLs hart im Template zu kodieren, nutzt man
+den `router`-Helper, der die Links basierend auf der Router-Konfiguration
+erzeugt. Auf diese Weise können all deine URLs einfach über die Konfiguration
+verwaltet werden.
 
     [php]
     <a href="<?php echo $view->router->generate('hello', array('name' => 'Thomas')) ?>">
       Greet Thomas!
     </a>
 
-The `generate()` method takes the route name and an array of values as
-arguments. The route name is the main key under which routes are referenced
-and the values should at least cover the route pattern placeholders:
+Die `generate()`-Methode erhält den Routennamen und ein Array aus Werten
+als Argumente. Der Routenname ist der Schlüssel, mit dem Routen referenziert
+werden. Die Werte sollten mindestens die in der Routendefinition verwendeten
+Platzhalter abdecken:
 
     [yml]
     # src/Application/HelloBundle/Resources/config/routing.yml
@@ -185,49 +188,50 @@ and the values should at least cover the route pattern placeholders:
       pattern:  /hello/:name
       defaults: { _bundle: HelloBundle, _controller: Hello, _action: index }
 
-### Using Assets: images, JavaScripts, and stylesheets
+### Assets verwenden: Bilder, JavaScript und Stylesheets
 
-What would the Internet be without images, JavaScripts, and stylesheets?
-Symfony provides three helpers to deal with them easily: `assets`,
-`javascripts`, and `stylesheets`.
+Was wäre das Internet ohne Bilder, JavaScript und Stylesheets? Symfony
+stellt gleich drei Helper dafür bereit: `assets`, `javascripts` und
+`stylesheets`.
 
     [php]
     <link href="<?php echo $view->assets->getUrl('css/blog.css') ?>" rel="stylesheet" type="text/css" />
 
     <img src="<?php echo $view->assets->getUrl('images/logo.png') ?>" />
 
-The `assets` helpers main purpose is to make your application more portable.
-Thanks to it, you can move the application root directory anywhere under your
-web root directory without changing anything in your templates code.
+Der große Vorteil des `assets`-Helpers ist, dass er deine Applikation portierbar
+macht. Somit kannst du das Rootverzeichnis der Applikation im Webrootverzeichnis
+verschieben ohne dass irgendetwas an deinem Template-Code zu ändern ist.
 
-Similarly, you can manage your stylesheets and JavaScripts with the
-`stylesheets` and `JavaScripts` helpers:
+Genauso einfach lassen sich die Stylesheets und Javascripte mit den Helpern
+`stylesheets` und `javascripts` verwalten:
 
     [php]
     <?php $view->javascripts->add('js/product.js') ?>
     <?php $view->stylesheets->add('css/product.css') ?>
 
-The `add()` method defines dependencies. To actually output these assets, you
-need to also add the following code in your main layout:
+Die `add()`-Methode definiert Abhängigkeiten. Um diese Assets auszugeben musst
+du aber noch folgenden Code im Haupt-Layout ausgeben:
 
     [php]
     <?php echo $view->javascripts ?>
     <?php echo $view->stylesheets ?>
 
-Final Thoughts
---------------
+Abschließende Bemerkungen
+-------------------------
 
-The Symfony templating system is simple and powerful. Thanks to layouts,
-slots, templating and action inclusions, it is very easy to organize your
-templates in a logical and extensible way. In the later part, you will learn
-how to configure the default behavior of the templating system and how to
-extend it by adding new helpers.
+Das Templating-System von Symfony ist einfach und kraftvoll. Dank Layouts,
+Slots, Templating und Action-Einbettungen ist es sehr einfach, die Templates
+in logischer und zugleich erweiterbarer Art und Weise zu organisieren.
+Später wirst du lernen, wie das Standardverhalten des Templating-Systems
+angepasst und durch neue Helper erweitert werden kann.
 
-You are only working with Symfony since about 20 minutes, and you can already
-do pretty amazing stuff with it. That's the power of Symfony. Learning the
-basics is easy, and you will soon learn that this simplicity is hidden under a
-very flexible architecture.
+Nun arbeitest du gerade einmal 20 Minuten mit Symfony und kannst schon jede
+Menge lustige Sachen damit tun. Das ist Symfonys Stärke. Es ist einfach, die
+Grundlagen zu erlernen, bald wirst du sehen, dass dieser Einfachheit eine
+äußerst flexible Architektur zugrunde liegt.
 
-But I get ahead of myself. First, you need to learn more about the controller
-and that's exactly the topic of the next part of this tutorial. Ready for
-another 10 minutes with Symfony?
+Oh, ich greife wohl schon wieder zu weit vor. Im nächsten Schritt wirst du
+nun erst einmal etwas über den Controller lernen müssen - und genau das ist
+auch das Thema des nächsten Teiles dieses Tutorials. Bist du bereit für weitere
+10 Minuten mit Symfony?
