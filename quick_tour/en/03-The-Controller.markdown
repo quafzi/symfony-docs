@@ -47,7 +47,7 @@ format.
 
 The `requirements` entry defines regular expressions that placeholders must
 match. In this example, if you try to request the `/hello/Fabien.js` resource,
-you will get a 404 HTTP error, as it does not match the `_route` requirement.
+you will get a 404 HTTP error, as it does not match the `_format` requirement.
 
 The Response Object
 -------------------
