@@ -46,16 +46,15 @@ Der Controller wird nun für URLs wie `/hello/Fabien.xml` oder
 werden sowohl `/hello/Fabien` als auch `/hello/Fabien.html` das Format `html`
 liefern.
 
+Die `requirements`-Angabe definiert einen regulären Ausdruck, auf den die
+Platzhalter passen müssen. In diesem Beispiel wirst du einen 404-HTTP-Fehler
+bekommen, wenn du versuchst `/hello/Fabien.js` aufzurufen, da die
+`_route`-Bedingung nicht erfüllt wird.
 
-
-The `requirements` entry defines regular expressions that placeholders must
-match. In this example, if you try to request the `/hello/Fabien.js` resource,
-you will get a 404 HTTP error, as it does not match the `_route` requirement.
-
-The Response Object
+Das Response-Objekt
 -------------------
 
-Now, let's get back to the `Hello` controller.
+Lass uns nun zum `Hello`-Controller zurückkehren:
 
     [php]
     public function indexAction($name)
@@ -63,9 +62,9 @@ Now, let's get back to the `Hello` controller.
       return $this->render('HelloBundle:Hello:index', array('name' => $name));
     }
 
-The `render()` method renders a template and returns a `Response` object. The
-response can be tweaked before it is sent to the browser, for instance to
-change the default `Content-Type`:
+Die `render()`-Methode rendert ein Template und liefert ein `Response`-Objekt
+Die Antwort kann noch optimiert werden, bevor sie an den Browser gesendet wird,
+beispielsweise indem der `Content-Type` geändert wird:
 
     [php]
     public function indexAction($name)
@@ -76,8 +75,8 @@ change the default `Content-Type`:
       return $response;
     }
 
-For simple templates, you can even create a `Response` object by hand and save
-some milliseconds:
+Für ein einfaches Template kannst du das `Response`-Objekt auch per Hand anlegen
+und ein paar Millisekunden sparen:
 
     [php]
     public function indexAction($name)
@@ -85,15 +84,15 @@ some milliseconds:
       return $this->createResponse('Hello '.$name);
     }
 
-This is more useful when a controller needs to send back a JSON response, for
-an Ajax request for instance.
+Das ist besonders praktisch, wenn ein Controller - zum Beispiel für einen
+AJAX-Request - per JSON antworten soll.
 
-Error Management
+Fehlerbehandlung
 ----------------
 
-When things are not found, you should play well with the HTTP protocol and
-return a 404 response. This is easily done by throwing a built-in HTTP
-exception:
+Wenn etwas nicht gefunden wurde, sollte man dem HTTP-Protokoll folgen und
+eine 404-Antwort liefern. Das kann einfach durch Werfen der eingebauten
+HTTP-Exception passieren:
 
     [php]
     use Symfony\Components\RequestHandler\Exception\NotFoundHttpException;
@@ -109,41 +108,44 @@ exception:
       return $this->render(...);
     }
 
-The `NotFoundHttpException` will return a 404 HTTP response back to the
-browser. Similarly, `ForbiddenHttpException` returns a 403 error and
-`UnauthorizedHttpException` a 401 one. For any other HTTP error code, you can
-use the base `HttpException` and pass the HTTP error as the exception code:
+Die `NotFoundHttpException` wird eine 404-HTTP-Antwort an den Browser zurück
+geben. Entsprechend liefert die `ForbiddenHttpException` einen 403-Fehler
+und die `UnauthorizedHttpException` eine 401. Für jeden anderen HTTP-Fehlercode
+kann die Basis-`HttpException` genutzt und der HTTP-Fehler als Exception-Code
+übergeben werden:
 
     [php]
     throw new HttpException('Unauthorized access.', 401);
 
-Redirecting and Forwarding
---------------------------
+Um- und Weiterleitung
+---------------------
 
-If you want to redirect the user to another page, use the `redirect()` method:
+Wenn man den Nutzer auf eine andere Seite umleiten möchte, nutzt man
+einfach die `redirect()`-Methode:
 
     [php]
     $this->redirect($this->generateUrl('hello', array('name' => 'Lucas')));
 
-The `generateUrl()` is the same method as the `generate()` method we used on
-the `router` helper before. It takes the route name and an array of parameters
-as arguments and returns the associated friendly URL.
+Hinter `generateUrl()` verbirgt sich im Übrigen nichts anderes als die
+`generate()`-Methode, die wir bereits beim `router`-Helper verwendet haben.
+Sie nimmt den Routennamen sowie ein Array von Parametern entgegen und gibt die
+zugehörige, menschenlesbare URL zurück.
 
-You can also easily forward the action to another one with the `forward()`
-method. As for the `$view->actions` helper, it makes an internal sub-request,
-but it returns the `Response` object to allow for further modification if the
-need arises:
+Ebenso einfach ist die Weiterleitung von einer Action auf eine andere, was mit
+der `forward()`-Methode erfolgt. Wie der `$view->actions`-Helper wird ein
+interner Subrequest durchgeführt, als Ergebnis erhält man jedoch ein
+Response-Objekt, was nach Belieben modifiziert werden kann:
 
     [php]
     $response = $this->forward('HelloBundle:Hello:fancy', array('name' => $name, 'color' => 'green'));
 
     // do something with the response or return it directly
 
-The Request Object
+Das Request-Objekt
 ------------------
 
-Besides the values of the routing placeholders, the controller also has access
-to the `Request` object:
+Der Controller erhält nicht nur Zugriff auf die Routing-Platzhalter, sondern
+auch auf das gesamte `Request`-Objekt:
 
     [php]
     $request = $this->getRequest();
@@ -156,16 +158,16 @@ to the `Request` object:
 
     $request->getRequestParameter('page'); // get a $_POST parameter
 
-In a template, you can also access the request object via the `request`
-helper:
+Auch im Template kann mittels `request`-Helpter einfach auf das
+`Request`-Objekt zugegriffen werden:
 
     [php]
     <?php echo $view->request->getParameter('page') ?>
 
-Final Thoughts
---------------
+Abschließende Gedanken
+----------------------
 
-That's all there is to it, and I'm not even sure we have spent the allocated
-10 minutes. In the previous part, we have seen how to extend the templating
-system with helpers. Extending the controller can also be easily done thanks
-to bundles. That's the topic of the next part of this tutorial.
+Nun ist schon alles gesagt, wahrscheinlich sind noch nicht einmal 10 Minuten
+um. Im vergangenen Teil haben wir gesehen, wie das Templatingsystem durch die
+Helper erweitert werden kann. Dank Bundles ist das auch beim Controller möglich
+- das wird das Thema im nächsten Abschnitt dieses Tutorials sein.
