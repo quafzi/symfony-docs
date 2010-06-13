@@ -17,7 +17,7 @@ Flexibilität vorgefertigte Features von Dritten zu übernehmen oder aber deine
 eigenen zu verbreiten. Sie erlauben eine gezielte Auswahl von Features und
 deren Optimierung auf den gewünschten Einsatzzweck.
 
-Anwendungen bestehen aus Bundles. Welche das sind, wird in `registerBundles()'
+Anwendungen bestehen aus Bundles. Welche das sind, wird in `registerBundles()`
 in unserer `HelloKernel`-Klasse angegeben:
 
     [php]
@@ -77,7 +77,7 @@ Der Benutzer
 Obwohl HTTP statuslos ist, stellt Symfony ein praktisches User-Objekt bereit,
 welches den Client darstellt (ganz egal, ob der Client nun eine echte Person
 mit Browser ist, ein Robot oder ein Webservice). Zwischen den Requests
-speichert Symfony die Attribure in einem Cookie, indem die ganz normalen
+speichert Symfony die Attribute in einem Cookie, indem die ganz normalen
 PHP-Sessions genutzt werden.
 
 Dieses Feature wird vom `WebBundle` bereitgestellt und kann durch die folgende

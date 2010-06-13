@@ -12,7 +12,7 @@ Hause fühlen.
 Download and Installation
 -------------------------
 
-Zunächst solltest du prüfen, ob PHP in der Version 5.3.0 oder höher installiert
+Zunächst solltest du prüfen, ob du PHP in der Version 5.3.0 oder höher installiert
 und für die Arbeit mit einem Webserver wie Apache korrekt konfiguriert hast.
 
 Fertig? Beginnen wir mit dem Download von Symfony. Um schnell vorwärts zu
@@ -55,7 +55,7 @@ Nun ist es Zeit, die erste "echte" Symfony-Website aufzurufen:
 
     http://localhost/sandbox/web/index_dev.php/
 
-Symfony sollte dir zu deiner bisherigen harte Arbeit gratulieren!
+Symfony sollte dir zu deiner bisherigen harten Arbeit gratulieren!
 
 Deine erste Applikation
 -----------------------
@@ -177,7 +177,7 @@ Templates. Das Template selbst besteht aus HTML und einfachen PHP-Ausdrücken:
 
     Hello <?php echo $name ?>!
 
-Herzlichen Glückwunsch! Du hast nun die ersten Stücken Symfony-Code gesehen.
+Herzlichen Glückwunsch! Du hast nun die ersten Stücke Symfony-Code gesehen.
 Das war doch gar nicht so schwer, oder? Mit Symfony kann man wirklich einfacher
 und schneller Webseiten implementieren.
 
@@ -185,7 +185,7 @@ und schneller Webseiten implementieren.
 Umgebungen
 ----------
 
-Nun verstehst du etwas besser, wie Symfony funktioniert, lass uns jetzt einen
+Nun verstehst du etwas besser, wie Symfony funktioniert; lass uns jetzt einen
 Blick auf die Fußzeile der Website werfen, da wirst du eine schmale Leiste mit
 Symfony- und PHP-Logos sehen. Diese Leiste nennt man die "Web Debug Toolbar"
 und sie macht Entwicklern das Leben um einiges leichter. Natürlich darf sie auf

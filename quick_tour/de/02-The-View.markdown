@@ -2,8 +2,8 @@ Eine schnelle Tour durch Symfony 2.0: Der View
 ==============================================
 
 
-Decorating Templates
---------------------
+Templates gestalten
+-------------------
 
 Häufig enthalten die Templates eines Projektes globale Elemente, so zum Beispiel
 Header und Footer. In Symfony wird dieses Problem anders gehandhabt: Templates

@@ -74,7 +74,7 @@ hast du die `hello/config/routing.yml` geöffnet. Deren Pfad ist in
       return $loader->load(__DIR__.'/config/routing.yml');
     }
 
-Dies ist auch der Punkt, wo du von YAML- auf XML- oder
+Dies ist auch der Punkt, an dem du von YAML- auf XML- oder
 PHP-Konfigurationsdateien wechseln kannst, je nachdem, was deinen Bedürfnissen
 am besten entspricht.
 
@@ -115,7 +115,7 @@ Die Datei `src/autoload.php` ist für das automatische Laden aller im
 
 Der `UniversalClassLoader` von Symfony wird genutzt um alle Dateien, die
 entweder die [technische Interoperabilität][1] für PHP-5.3-Namespaces oder
-die PEAR-[Namenskonfentionen][2] für Klassen erfüllen, automatisch zu laden.
+die PEAR-[Namenskonventionen][2] für Klassen erfüllen, automatisch zu laden.
 Alle Abhängigkeiten sind hier im `vendor/`-Verzeichnis abgelegt, das jedoch
 ist nur eine Konvention. Du kannst sie speichern, wo immer du willst, global
 auf dem Server oder lokal im Projekt.
